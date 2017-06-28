@@ -144,11 +144,11 @@ class GoogleCalendar extends CalendarApi
             let eventEnd = event.end.dateTime ? new Date(event.end.dateTime) : new Date(event.end.date);
 
             if (eventStart.valueOf() == startTime.valueOf())
-              return true;
-            else if (eventStart > startTime && eventStart < eventEnd)
-              return true;
-            else if (eventEnd > startTime && eventEnd < endTime)
-              return true;
+              return true;  // An event starts at the same time
+            else if (eventStart < startTime && eventEnd > startTime)
+              return true; // An event ends during the period
+            else if (eventStart > startTime && eventStart < endTime)
+              return true; // An event starts during the period
             else
               return false;
           });
