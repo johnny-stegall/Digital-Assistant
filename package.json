@@ -1,0 +1,31 @@
+{
+  "name": "DigitalAssistant",
+  "version": "1.0.0",
+  "description": "Digital Assistant proof-of-concept.",
+  "main": "app.js",
+  "author":
+  {
+    "name": "Johnny Stegall"
+  },
+  "dependencies":
+  {
+    "botbuilder": "^3.7.0",
+    "botbuilder-azure": "3.0.2",
+    "dotenv-extended": "^2.0.1",
+    "google-auth-library": "^0.10.0",
+    "googleapis": "^19.0.0",
+    "moment": "^2.18.1",
+    "node-fetch": "^1.0.0",
+    "readline-sync": "1.4.7",
+    "restify": "^4.3.0",
+    "system-sleep": "1.3.5"
+  },
+  "devDependencies":
+  {
+    "restify": "^4.3.0"
+  },
+  "scripts":
+  {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

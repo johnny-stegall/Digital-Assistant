@@ -1,0 +1,14 @@
+/bin/
+/obj/
+/.vs/
+/node_modules/
+.env
+google-credentials.json
+/Digital-Assistant - Web Deploy.pubxml
+/Digital-Assistant - Web Deploy.pubxml.user
+/npm-debug.log
+/Digital-Assistant.njsproj
+/Digital-Assistant.sln
+Driver Assist *.json
+/Test Notes.txt
+*.config
