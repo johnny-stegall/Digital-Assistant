@@ -161,7 +161,7 @@ class Calendar
     let dateTimeToDelete = toDate(dateTimeEntity, dateEntity, timeEntity);
     let confirmation;
 
-    if (title && (dateEntity || dateTimeEntity))
+    if (title)
     {
       confirmation = `Are you sure you want to remove ${title}`;
 
@@ -178,7 +178,7 @@ class Calendar
 
       confirmation += " from your calendar?";
     }
-    else
+    else if (dateTimeToDelete)
     {
       let locale =
       {
@@ -228,23 +228,25 @@ class Calendar
   {
     // The Bot Framework uses the JSON deep clone hack; convert the serialized
     // date back into a Date object
-    session.dialogData.event.date = new Date(session.dialogData.event.date);
+    if (session.dialogData.event.date)
+      session.dialogData.event.date = new Date(session.dialogData.event.date);
 
-    if (results.response.entity === "Yes")
+    if (results.response.entity.toLowerCase() === "yes")
     {
-      if (session.dialogData.event.title)
+      let event = session.dialogData.event;
+      if (event.title)
       {
         this.calendarApi
-          .deleteEvent(session.dialogData.event.title)
+          .deleteEvent(event.title)
           .then(function()
           {
-            session.send(`I've removed ${session.dialogData.event.title} from your calendar.`);
+            session.send(`I've removed ${event.title} from your calendar.`);
           });
       }
       else
       {
         this.calendarApi
-          .deleteEvent(session.dialogData.event.date)
+          .deleteEvent(event.date)
           .then(function()
           {
             let locale =
@@ -253,8 +255,9 @@ class Calendar
               month: "long",
               day: "numeric",
               year: "numeric"
-            };
-            session.send(`I've removed the appointment at ${session.dialogData.event.date.toLocaleString("en-US", locale)} from your calendar.`);
+              };
+
+            session.send(`I've removed the appointment at ${event.date.toLocaleString("en-US", locale)} from your calendar.`);
           });
       }
     }
@@ -283,10 +286,10 @@ class Calendar
     let attendeesToRemove = null;
     let newAttendees = null;
     let event =
-      {
-        dateTime: toDate(dateTimeEntity, dateEntity, timeEntity),
-        title: (titleEntity && titleEntity.entity) ? titleEntity.entity : null
-      };
+    {
+      dateTime: toDate(dateTimeEntity, dateEntity, timeEntity),
+      title: (titleEntity && titleEntity.entity) ? titleEntity.entity : null
+    };
 
     if (event.dateTime || event.title)
     {
@@ -390,7 +393,10 @@ function toDate(dateTimeEntity, dateEntity, timeEntity)
     if (timeEntity)
       dateTime += ` ${timeEntity.resolution.values[timeEntity.resolution.values.length - 1].value}`;
 
-    return new Date(dateTime);
+    if (dateTime.trim.length > 0)
+      return new Date(dateTime);
+    else
+      return null;
   }
 }
 

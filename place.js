@@ -302,7 +302,10 @@ function toDate(dateTimeEntity, dateEntity, timeEntity)
     if (timeEntity)
       dateTime += ` ${timeEntity.resolution.values[timeEntity.resolution.values.length - 1].value}`;
 
-    return new Date(dateTime);
+    if (dateTime.trim.length > 0)
+      return new Date(dateTime);
+    else
+      return null;
   }
 }
 

@@ -98,16 +98,16 @@ class GoogleCalendar extends CalendarApi
         if (existingEvent)
         {
           calendar.events.delete(
-            {
-              auth: this.oauth2Client,
-              calendarId: "primary",
-              eventId: existingEvent.id,
-            },
-            function (e)
-            {
-              if (e)
-                console.log(`Failed to delete ${existingEvent.subject}: ${e}.`);
-            });
+          {
+            auth: this.oauth2Client,
+            calendarId: "primary",
+            eventId: existingEvent.id,
+          },
+          function (e)
+          {
+            if (e)
+              console.log(`Failed to delete ${existingEvent.subject}: ${e}.`);
+          });
         }
       });
   }
@@ -267,15 +267,15 @@ function findEvent(calendar, oauth2Client, event)
 
       return events.find(existingEvent =>
       {
-        if (typeof (existingEvent) === "object")
+        if (typeof (event) === "object")
         {
           let startTime = existingEvent.start.dateTime ? new Date(existingEvent.start.dateTime) : new Date(existingEvent.start.date);
           return (startTime.valueOf() == event.valueOf());
         }
-        else if (typeof (existingEvent) === "string")
+        else if (typeof (event) === "string")
         {
           let title = existingEvent.subject || existingEvent.summary;
-          return title == event;
+          return title.toLowerCase() == event.toLowerCase();
         }
       });
     });
