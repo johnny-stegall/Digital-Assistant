@@ -16,7 +16,7 @@ let botConnector = setupBotBuilder();
 const bot = new botBuilder.UniversalBot(botConnector);
 
 // LUIS credentials
-const luisAppUrl = `https://${process.env.luisAPIHostName}/luis/v2.0/apps/${process.env.luisAppId}?subscription-key=${process.env.luisAPIKey}&timezoneOffset=${process.env.luisTimezoneOffset}`;
+const luisAppUrl = `https://${process.env.luisAPIHostName}/luis/v2.0/apps/${process.env.luisAppId}?subscription-key=${process.env.luisAPIKey}&timezoneOffset=${new Date().getTimezoneOffset()}`;
 const luisRecognizer = new botBuilder.LuisRecognizer(luisAppUrl);
 
 // Setup LUIS intent dialogs

@@ -81,57 +81,50 @@ class Calendar
     let timeEntity = this.botBuilder.EntityRecognizer.findEntity(args.entities, "builtin.datetimeV2.time");
     let durationEntity = this.botBuilder.EntityRecognizer.findEntity(args.entities, "builtin.datetimeV2.duration");
     let duration = durationEntity ? durationEntity.resolution.values[durationEntity.resolution.values.length - 1].value / 60 : 60;
+    let dateTime = toDate(dateTimeEntity, dateEntity, timeEntity);;
 
-    if (appointmentEntity)
+    if (isNaN(dateTime))
     {
-      let dateTime = toDate(dateTimeEntity, dateEntity, timeEntity);
-      let attendees = buildAttendeeList(attendeeEntities);
-      let title = buildTitle(titleEntity, appointmentEntity, attendees, session);
-
-      this.calendarApi.createEvent(dateTime, duration, title, attendees);
-
-      let confirmation = `I've added ${title}`;
-
-      if (titleEntity)
-      {
-        if (attendeeEntities && attendeeEntities.length)
-          confirmation += ` with ${attendees}`;
-      }
-
-      if (locationEntity)
-        confirmation += ` at ${locationEntity.entity}`;
-
-      if (dateTimeEntity)
-        confirmation += ` ${dateTimeEntity.entity}`;
-      else
-      {
-        if (dateEntity)
-          confirmation += ` on ${dateEntity.entity}`;
-
-        if (timeEntity)
-          confirmation += ` at ${timeEntity.entity}`;
-      }
-
-      if (durationEntity)
-        confirmation += ` for ${durationEntity.entity}`;
-
-      confirmation += " to your calendar.";
-      session.send(confirmation);
+      session.send("I think you're trying to create an appointment but I didn't catch the details. Can you try again?");
+      return;
     }
-    else
-    {
-      let dateTimeEntity = this.botBuilder.EntityRecognizer.findEntity(args.entities, "builtin.datetimeV2.datetime");
-      let dateTime = toDate(dateTimeEntity, dateEntity, timeEntity);
 
-      if (isNaN(dateTime))
-        session.send("I think you're trying to create an appointment but I didn't catch the details. Can you try again?");
-      else
+    let attendees = buildAttendeeList(attendeeEntities);
+    let title = buildTitle(titleEntity, appointmentEntity, attendees, session);
+
+    this.calendarApi
+      .createEvent(dateTime, duration, title, attendees)
+      .then(function()
       {
-        let attendees = buildAttendeeList(attendeeEntities);
-        let title = buildTitle(titleEntity, appointmentEntity, attendees, session);
-        this.calendarApi.createEvent(dateTime, duration, title, attendeeEntities);
-      }
-    }
+        let confirmation = `I've added ${title}`;
+
+        if (titleEntity)
+        {
+          if (attendeeEntities && attendeeEntities.length)
+            confirmation += ` with ${attendees}`;
+        }
+
+        if (locationEntity)
+          confirmation += ` at ${locationEntity.entity}`;
+
+        if (dateTimeEntity)
+          confirmation += ` ${dateTimeEntity.entity}`;
+        else
+        {
+          if (dateEntity)
+            confirmation += ` on ${dateEntity.entity}`;
+
+          if (timeEntity)
+            confirmation += ` at ${timeEntity.entity}`;
+        }
+
+        if (durationEntity)
+          confirmation += ` for ${durationEntity.entity}`;
+
+        confirmation += " to your calendar.";
+        session.send(confirmation);
+      })
+      .catch(e => session.send("Something's wrong, I couldn't create the event in your calendar."));
   }
 
   /**************************************************************************
@@ -241,7 +234,8 @@ class Calendar
           .then(function()
           {
             session.send(`I've removed ${event.title} from your calendar.`);
-          });
+          })
+          .catch(e => session.send("Something's wrong, I couldn't remove the event in your calendar."));
       }
       else
       {
@@ -258,7 +252,8 @@ class Calendar
               };
 
             session.send(`I've removed the appointment at ${event.date.toLocaleString("en-US", locale)} from your calendar.`);
-          });
+          })
+          .catch(e => session.send("Something's wrong, I couldn't remove the event in your calendar."));
       }
     }
 

@@ -36,6 +36,7 @@ class GoogleCalendar extends CalendarApi
   * @param {string} title The event title.
   * @param {string} location The location.
   * @param {array} attendees The names of the attendees.
+  * @returns {object} A Promise.
   ****************************************************************************/
   createEvent(dateTime, duration, title, location, attendees)
   {
@@ -43,7 +44,7 @@ class GoogleCalendar extends CalendarApi
       authenticate.call(this);
 
     let calendar = google.calendar("v3");
-    let endTime = new Date(dateTime.getTime() + (duration * 60000))
+    let endTime = new Date(dateTime.getTime() + (duration * 60000));
     let event =
     {
       "summary": title,
@@ -51,13 +52,11 @@ class GoogleCalendar extends CalendarApi
       "description": title,
       "start":
       {
-        "dateTime": dateTime,
-        "timeZone": "America/Los_Angeles",
+        "dateTime": dateTime
       },
       "end":
       {
-        "dateTime": endTime,
-        "timeZone": "America/Los_Angeles",
+        "dateTime": endTime
       },
       "attendees": [],
     };
@@ -68,16 +67,21 @@ class GoogleCalendar extends CalendarApi
         event.attendees.push({ "email": this.resolveEmail(attendees[attendeeIndex].entity) });
     }
 
-    calendar.events.insert(
+    return new Promise((resolve, reject) =>
     {
-      auth: this.oauth2Client,
-      calendarId: "primary",
-      resource: event
-    },
-    function(e)
-    {
-      if (e)
-        console.log(`There was an error contacting the Calendar service: ${e}.`);
+      calendar.events.insert(
+      {
+        auth: this.oauth2Client,
+        calendarId: "primary",
+        resource: event
+      },
+      function (e)
+      {
+        if (e)
+          console.log(`There was an error contacting the Calendar service: ${e}.`);
+      });
+
+      resolve(null);
     });
   }
 
@@ -85,6 +89,7 @@ class GoogleCalendar extends CalendarApi
   * Deletes an event.
   *
   * @param {variant} event The event date and time or title.
+  * @returns {object} A Promise.
   ****************************************************************************/
   deleteEvent(event)
   {
@@ -298,11 +303,11 @@ function getEvents(calendar, oauth2Client, startTime, endTime)
     {
       auth: oauth2Client,
       calendarId: "primary",
-      timeMin: startTime ? startTime.toISOString() : (new Date()).toISOString(),
-      timMax: endTime ? endTime.toISOString() : (new Date(new Date().getDate() + 7)).toISOString(),
       maxResults: 20,
+      orderBy: "startTime",
       singleEvents: true,
-      orderBy: "startTime"
+      timeMin: startTime ? startTime.toISOString() : (new Date()).toISOString(),
+      timMax: endTime ? endTime.toISOString() : (new Date(new Date().getDate() + 7)).toISOString()
     },
     function(e, response) 
     {
