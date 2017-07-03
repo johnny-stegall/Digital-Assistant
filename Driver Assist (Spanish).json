@@ -1,0 +1,1182 @@
+{
+  "luis_schema_version": "2.1.0",
+  "versionId": "0.1",
+  "name": "Driver Assist (Spanish)",
+  "desc": "Gets the address for a point-of-interest for Spanish (Mexican) drivers.",
+  "culture": "es-es",
+  "intents": [
+    {
+      "name": "Calendar.CreateEvent"
+    },
+    {
+      "name": "Calendar.DeleteEvent"
+    },
+    {
+      "name": "Calendar.IsAvailable"
+    },
+    {
+      "name": "Calendar.UpdateEvent"
+    },
+    {
+      "name": "Dialog.End"
+    },
+    {
+      "name": "Map.NextPage"
+    },
+    {
+      "name": "Map.PreviousPage"
+    },
+    {
+      "name": "Map.RestartListing"
+    },
+    {
+      "name": "Map.Search"
+    },
+    {
+      "name": "Map.Selection"
+    },
+    {
+      "name": "Map.Show"
+    },
+    {
+      "name": "Map.StopDirections"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "Place.Call"
+    },
+    {
+      "name": "Place.GetAddress"
+    },
+    {
+      "name": "Place.GetDirections"
+    },
+    {
+      "name": "Place.GetHours"
+    },
+    {
+      "name": "Place.GetMenu"
+    },
+    {
+      "name": "Place.GetPhoneNumber"
+    },
+    {
+      "name": "Place.GetPriceRange"
+    },
+    {
+      "name": "Place.GetRating"
+    },
+    {
+      "name": "Place.MakeReservation"
+    }
+  ],
+  "entities": [
+    {
+      "name": "Calendar.Attendee"
+    },
+    {
+      "name": "Calendar.Location",
+      "inherits": {
+        "domain_name": "Calendar",
+        "model_name": "Location"
+      }
+    },
+    {
+      "name": "Calendar.Title"
+    },
+    {
+      "name": "Map.Aversion"
+    },
+    {
+      "name": "Map.Destination"
+    },
+    {
+      "name": "Map.RoutePreference"
+    },
+    {
+      "name": "Place.Name"
+    },
+    {
+      "name": "Place.Type"
+    }
+  ],
+  "composites": [
+    {
+      "name": "Map.Adjective",
+      "children": [
+        "Place.Rating",
+        "Place.Price"
+      ]
+    },
+    {
+      "name": "Map.PointOfInterest",
+      "children": [
+        "Place.Name",
+        "Place.Type"
+      ]
+    },
+    {
+      "name": "Place.Ordinal",
+      "children": [
+        "number",
+        "ordinal"
+      ]
+    }
+  ],
+  "closedLists": [
+    {
+      "name": "Calendar.Appointment",
+      "subLists": [
+        {
+          "canonicalForm": "cita",
+          "list": [
+            "evento",
+            "tarea",
+            "arreglos",
+            "recordatorio",
+            "reunión"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Map.Proximity",
+      "subLists": [
+        {
+          "canonicalForm": "nearby",
+          "list": [
+            "close",
+            "near me",
+            "local",
+            "near by"
+          ]
+        },
+        {
+          "canonicalForm": "closest",
+          "list": [
+            "nearest"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Place.Price",
+      "subLists": [
+        {
+          "canonicalForm": "cheap",
+          "list": [
+            "inexpensive",
+            "modest"
+          ]
+        },
+        {
+          "canonicalForm": "cheapest",
+          "list": [
+            "least-expensive",
+            "least expensive"
+          ]
+        },
+        {
+          "canonicalForm": "expensive",
+          "list": [
+            "lavish",
+            "upscale",
+            "fancy",
+            "costly",
+            "extravagant",
+            "pricey",
+            "overpriced",
+            "over-priced",
+            "big-ticket",
+            "big ticket",
+            "excessive",
+            "exorbitant",
+            "posh",
+            "plush",
+            "swank",
+            "steep",
+            "artisan"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Place.Rating",
+      "subLists": [
+        {
+          "canonicalForm": "3-star",
+          "list": [
+            "three-star",
+            "3 star",
+            "three star",
+            "good",
+            "acceptable",
+            "favorable",
+            "satisfying",
+            "choice",
+            "pleasing",
+            "agreeable"
+          ]
+        },
+        {
+          "canonicalForm": "4-star",
+          "list": [
+            "four-star",
+            "4 star",
+            "four star",
+            "super",
+            "great",
+            "splendid",
+            "wonderful",
+            "excellent",
+            "fabulous",
+            "marvelous",
+            "impressive",
+            "tasty",
+            "nice",
+            "remarkable",
+            "fantastic",
+            "terrific",
+            "highly rated"
+          ]
+        },
+        {
+          "canonicalForm": "5-star",
+          "list": [
+            "five-star",
+            "5 star",
+            "five star",
+            "outstanding",
+            "exceptional",
+            "magnificent",
+            "perfect",
+            "top-notch",
+            "top notch",
+            "amazing",
+            "smashing",
+            "extraordinary",
+            "incredible",
+            "spectacular",
+            "superior",
+            "brilliant"
+          ]
+        }
+      ]
+    }
+  ],
+  "bing_entities": [
+    "datetime",
+    "dimension",
+    "number",
+    "ordinal"
+  ],
+  "actions": [],
+  "model_features": [
+    {
+      "name": "Place.Type",
+      "mode": true,
+      "words": "bar,salón,taberna,pub,osteria,tienda de humo,Salón de cigarros,barra de la cachimba,casa de café,café,comercial,centro comercial,plaza,tienda de comestibles,supermercado,comestibles,farmacia,taller de reparación,mecánico,reparación de automóviles,reparación de automóviles,centro de servicio",
+      "activated": true
+    }
+  ],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "página siguiente",
+      "intent": "Map.NextPage",
+      "entities": []
+    },
+    {
+      "text": "página anterior",
+      "intent": "Map.PreviousPage",
+      "entities": []
+    },
+    {
+      "text": "ya no más",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "dónde estoy",
+      "intent": "Map.Show",
+      "entities": []
+    },
+    {
+      "text": "siguiente",
+      "intent": "Map.NextPage",
+      "entities": []
+    },
+    {
+      "text": "no",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "no, gracias",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "empezar de largo",
+      "intent": "Map.RestartListing",
+      "entities": []
+    },
+    {
+      "text": "anterior",
+      "intent": "Map.PreviousPage",
+      "entities": []
+    },
+    {
+      "text": "reserve una mesa",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "he terminado",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "hacer una reserva",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "suficiente",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "ubicación actual",
+      "intent": "Map.Show",
+      "entities": []
+    },
+    {
+      "text": "reserve una mesa",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "seleccione el número dos",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "último",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "cómo puedo llegar",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "he terminado",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "llévame allí",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "dirección por favor",
+      "intent": "Place.GetAddress",
+      "entities": []
+    },
+    {
+      "text": "cuál es su número de teléfono",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "comenzar de nuevo",
+      "intent": "Map.RestartListing",
+      "entities": []
+    },
+    {
+      "text": "mostrar mi ubicación",
+      "intent": "Map.Show",
+      "entities": []
+    },
+    {
+      "text": "están abiertos",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "cuándo abren",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "baskin robbins",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "guíame allí",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "mostrar mapa",
+      "intent": "Map.Show",
+      "entities": []
+    },
+    {
+      "text": "ir a 3",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "tengo una hora abierta el lunes a las 2",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "detener direcciones",
+      "intent": "Map.StopDirections",
+      "entities": []
+    },
+    {
+      "text": "direcciones finales",
+      "intent": "Map.StopDirections",
+      "entities": []
+    },
+    {
+      "text": "salir de las direcciones",
+      "intent": "Map.StopDirections",
+      "entities": []
+    },
+    {
+      "text": "ubicación de la pantalla",
+      "intent": "Map.Show",
+      "entities": []
+    },
+    {
+      "text": "cuarto elemento",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "número de artículo siete",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "elija el número uno",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "seleccionar el sexto",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "seleccione el quinto elemento",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "abrir cuatro",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "volver al primer",
+      "intent": "Map.RestartListing",
+      "entities": []
+    },
+    {
+      "text": "volver al primer elemento",
+      "intent": "Map.RestartListing",
+      "entities": []
+    },
+    {
+      "text": "volver a la primera página",
+      "intent": "Map.RestartListing",
+      "entities": []
+    },
+    {
+      "text": "reunirse con steve basra, filo d'souza, y jennifer ramírez sobre la priorización en la oficina de steve el próximo miércoles a las 2 p.m. por 45 minutos",
+      "intent": "Calendar.CreateEvent",
+      "entities": []
+    },
+    {
+      "text": "agregar una reunión con david tsai y preston sterling en turing sobre la revisión de la arquitectura de 60 minutos viernes al mediodía",
+      "intent": "Calendar.CreateEvent",
+      "entities": []
+    },
+    {
+      "text": "programe una reunión mañana con david tsai, vijay chemuturi, steve basra, gk senthil, y jennifer ramirez en turing por 2 horas para repasar el acuerdo global",
+      "intent": "Calendar.CreateEvent",
+      "entities": []
+    },
+    {
+      "text": "crear un evento el 4 de octubre para el cumpleaños de johnny en el crisol con stacy, john, debbie, hermann, y jason durante 2 horas",
+      "intent": "Calendar.CreateEvent",
+      "entities": []
+    },
+    {
+      "text": "recuérdame que me reúna mañana en urban spoon con ned curic y david tsai al mediodía por 90 minutos",
+      "intent": "Calendar.CreateEvent",
+      "entities": []
+    },
+    {
+      "text": "reserve una cita de una hora con el doctor evans el próximo lunes a las 3 p.m. en saddleback atención urgente",
+      "intent": "Calendar.CreateEvent",
+      "entities": []
+    },
+    {
+      "text": "guardar la fecha del mediodía del 3 de junio es la fiesta de cumpleaños de stacy en javier durante 4 horas",
+      "intent": "Calendar.CreateEvent",
+      "entities": []
+    },
+    {
+      "text": "reunión clara con david tsai el lunes",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "eliminar propuesta de revisión el lunes",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "cancelar la fiesta de cumpleaños de tim el lunes",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "cancelar cita para el dentista el viernes",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "sesión de diseño de arquitectura clara el jueves",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "eliminar cita con john y stacy el jueves",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "ampliar proyecto de revisión de código goro por 30 minutos",
+      "intent": "Calendar.UpdateEvent",
+      "entities": []
+    },
+    {
+      "text": "revisión de presupuesto los lunes será ahora todos los miércoles",
+      "intent": "Calendar.UpdateEvent",
+      "entities": []
+    },
+    {
+      "text": "mover sesión de estrategia móvil a la próxima semana",
+      "intent": "Calendar.UpdateEvent",
+      "entities": []
+    },
+    {
+      "text": "cambiar la reunión de patrocinio del proyecto a martes a 9 a.m.",
+      "intent": "Calendar.UpdateEvent",
+      "entities": []
+    },
+    {
+      "text": "reprogramar sprint revisión el jueves al próximo lunes",
+      "intent": "Calendar.UpdateEvent",
+      "entities": []
+    },
+    {
+      "text": "dirección del crisol",
+      "intent": "Place.GetAddress",
+      "entities": []
+    },
+    {
+      "text": "qué tan bueno es taco bell",
+      "intent": "Place.GetRating",
+      "entities": []
+    },
+    {
+      "text": "valoración gyu-kaku",
+      "intent": "Place.GetRating",
+      "entities": []
+    },
+    {
+      "text": "cuál es la clasificación de bob's chop casa",
+      "intent": "Place.GetRating",
+      "entities": []
+    },
+    {
+      "text": "anillo de john's diner",
+      "intent": "Place.Call",
+      "entities": []
+    },
+    {
+      "text": "llama a ned curic",
+      "intent": "Place.Call",
+      "entities": []
+    },
+    {
+      "text": "es starbuck abierto el domingo",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "qué tan tarde es la farmacia abierta",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "cuáles son las horas de stater bros",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "es baskin robbins abierto",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "es dairy queen abierto en 5 p.m.",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "cuándo se abre wokcano",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "puedo tener el número de teléfono de ruby's diner",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "cuál es el número de teléfono de flemmings",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "número de contacto de disneyland",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "número de contacto de magic mountain",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "número de teléfono de las islas griegas",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "apple store número de teléfono",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "lo que está en tap en yardhouse",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "qué hay en el menú de denny's",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "proporcione el menú del jardín de bambú",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "menú de gyu-kaku",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "mostrar el menú de carl's jr",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "mostrar el menú de jasper's",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "gama de precios en mi cucina",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "precio típico en mizu sushi",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "precio medio en la pizza zander's",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "es cucina alessa caro",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "es pequeña pizza de césar barato",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "mostrar precio de disneyland",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "muéstrame una lista de grandes restaurantes chinos cerca de dallas/plano marriott legacy centro de la ciudad",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "muéstrame una lista de restaurantes excepcionales de fondue a 5 minutos de irvine, ca",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "muéstrame una lista de gasolineras baratas dentro de 5 millas de 5905 legado dr",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "guíame a brasileña steakhouses pendientes en 5 minutos",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "guíame a local excepcional pero helado barato",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "guíame al olive garden restaurante italiano a 15 minutos de seattle",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "guíame a la gasolinera más barata dentro de 15 minutos de 123 main st",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "dónde está natraj tandoori dentro de 5 millas de jamboree",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "dónde está la barbacoa japonesa excepcional dentro de 20 millas de plano",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "dónde puedo encontrar un tandoori decente a 5 minutos del aeropuerto john wayne",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "encuentra el helado baskin robbins a 15 minutos de irvine blvd",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "encuentra un magnífico helado a 5 millas de seattle",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "encontrar grandes tacos locales que están abiertos ahora",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "en busca de buenos chinos baratos a 5 millas de alto",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "en busca de un mexicano impresionante a 5 minutos de los Ángeles",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "en busca de cinco estrellas toyota taller de reparación cerca de 5905 legado drive",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "búsqueda de garajes con espacios abiertos en 20 minutos",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "buscar aparcamiento barato a 1 milla de lax",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "búsqueda de tiendas de comestibles que están cerca de 5905 legado drive",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "localice un destacado centro de servicio toyota a 5 millas del aeropuerto john wayne",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "localizar buena pizza a 5 minutos de los angeles",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "ubicar sushi excepcional cerca de 5905 legado drive",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "hay aparcamientos baratos dentro de 5 millas de 5905 legado drive",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "hay grandes pero baratos toyota tiendas de reparación dentro de 5 millas de tustin, ca",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "hay algún restaurante de sushi excepcional cerca del aeropuerto dfw",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "necesito un fantástico centro de servicio toyota dentro de 5 millas de 123 main st",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "necesito un restaurante italiano local",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "necesito una gran casa de bistec local a austin texas",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "más barato manera de comprar mejor evitar giros a la izquierda",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "la manera más rápida de dfw evitar peajes",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "cómo puedo llegar a dallas/centro de la ciudad de plano marriott legacy evitando las carreteras de peaje",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "camino más corto a la casa de jan evitando carreteras",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "guíame a la más cercana dairy queen y evitar carreteras",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "llévame a un concesionario toyota evitar autopistas",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "ruta a los servicios financieros de comercio electrónico evite las carreteras de peaje",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "direcciones para el zorro de plata evitar autopistas",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "abierto panda express",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "seleccione crisol",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "me gustaría que la tercera",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "me gustaría wokcano",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "mover 1:1 con dave a mi oficina",
+      "intent": "Calendar.UpdateEvent",
+      "entities": []
+    },
+    {
+      "text": "cambiar la ubicación de la sesión de planificación estratégica a la sala de conferencias ejecutivas",
+      "intent": "Calendar.UpdateEvent",
+      "entities": []
+    },
+    {
+      "text": "compruebe la disponibilidad de 7 p.m. el 13 de junio durante 1 hora",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "es jueves a 8 a.m. abierto por 90 minutos",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "estoy libre al mediodía durante 2 horas",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "cómo se ve mi calendario el 13 de junio a las 6 p.m. por 1 hora",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "es mi horario abierto el 29 de febrero por 4 horas a 5 p.m.",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "reserve una mesa para 6 en texas de brasil el próximo viernes a 7 p.m.",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "reserva en javier's para 2 el 3 de junio a las 6 p.m.",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "reserve una mesa para cuatro en el crisol a las 5:30:00 pm el próximo martes",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "déjame ver agora churrascaria",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "mostrar la página siguiente",
+      "intent": "Map.NextPage",
+      "entities": []
+    },
+    {
+      "text": "mostrar la página anterior",
+      "intent": "Map.PreviousPage",
+      "entities": []
+    },
+    {
+      "text": "dame su dirección",
+      "intent": "Place.GetAddress",
+      "entities": []
+    },
+    {
+      "text": "cuál es su dirección",
+      "intent": "Place.GetAddress",
+      "entities": []
+    },
+    {
+      "text": "qué tan tarde se abren",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "cuáles son sus horas",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "qué hay en su menú",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "mostrar su menú",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "mostrar su menú",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "puedo tener su número",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "son baratos",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "qué tan caros son",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "cuál es su rango de precios",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "cuánto por plato",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "veamos agora churrascaria",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "el crisol suena bien",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "reserve una mesa para 7 el próximo sábado al mediodía",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "reserva para tres el 1 de abril a las 10 a.m.",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "reserve una mesa para cinco a las 7:30 pm el lunes",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "manera más barata allí evitar las carreteras de peaje",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "la manera más rápida allí mientras que evita vueltas de la izquierda",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "cómo puedo llegar allí evitando peajes",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "camino más corto evitar autopistas",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "guíame allí evitando peajes",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "llévame allí, pero evita giros a la izquierda",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "ruta evitar autopistas",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "direcciones allí evitando las carreteras de peaje",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "ruta allí",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "direcciones allí",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "mapa de una ruta allí",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "manera más barata de llegar",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "cuál es el camino más rápido",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "camino más corto allí",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "cita clara el lunes a las 4:30",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "eliminar reunión el próximo viernes a las 3",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "cancelar reunión hoy al mediodía",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    }
+  ]
+}

@@ -37,29 +37,26 @@ class Calendar
       session.send("I'm sorry, but I didn't catch that date.");
     else
     {
-      this.calendarApi
-        .isAvailable(dateTime, duration)
-        .then(function(isAvailable)
-        {
-          let confirmation = isAvailable ? "Yes, you're available" : "No, you're not available";
+      let isAvailable = this.calendarApi.isAvailable(dateTime, duration);
 
-          if (dateTimeEntity)
-            confirmation += ` ${dateTimeEntity.entity}`;
-          else
-          {
-            if (dateEntity)
-              confirmation += ` ${dateEntity.entity}`;
+      let confirmation = isAvailable ? "Yes, you're available" : "No, you're not available";
 
-            if (timeEntity)
-              confirmation += ` at ${timeEntity.entity}`;
-          }
+      if (dateTimeEntity)
+        confirmation += ` ${dateTimeEntity.entity}`;
+      else
+      {
+        if (dateEntity)
+          confirmation += ` ${dateEntity.entity}`;
 
-        if (durationEntity)
-          confirmation += ` for ${durationEntity.entity}`;
+        if (timeEntity)
+          confirmation += ` at ${timeEntity.entity}`;
+      }
 
-        confirmation += ".";
-        session.send(confirmation); 
-      });
+      if (durationEntity)
+        confirmation += ` for ${durationEntity.entity}`;
+
+      confirmation += ".";
+      session.send(confirmation); 
     }
   }
 

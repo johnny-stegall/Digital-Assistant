@@ -1,0 +1,1197 @@
+{
+  "luis_schema_version": "2.1.0",
+  "versionId": "0.1",
+  "name": "Driver Assist (Japanese)",
+  "desc": "Gets the address for a point-of-interest for Japanese drivers.",
+  "culture": "ja-jp",
+  "intents": [
+    {
+      "name": "Calendar.CreateEvent"
+    },
+    {
+      "name": "Calendar.DeleteEvent"
+    },
+    {
+      "name": "Calendar.IsAvailable"
+    },
+    {
+      "name": "Calendar.UpdateEvent"
+    },
+    {
+      "name": "Dialog.End"
+    },
+    {
+      "name": "Map.NextPage"
+    },
+    {
+      "name": "Map.PreviousPage"
+    },
+    {
+      "name": "Map.RestartListing"
+    },
+    {
+      "name": "Map.Search"
+    },
+    {
+      "name": "Map.Selection"
+    },
+    {
+      "name": "Map.Show"
+    },
+    {
+      "name": "Map.StopDirections"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "Place.Call"
+    },
+    {
+      "name": "Place.GetAddress"
+    },
+    {
+      "name": "Place.GetDirections"
+    },
+    {
+      "name": "Place.GetHours"
+    },
+    {
+      "name": "Place.GetMenu"
+    },
+    {
+      "name": "Place.GetPhoneNumber"
+    },
+    {
+      "name": "Place.GetPriceRange"
+    },
+    {
+      "name": "Place.GetRating"
+    },
+    {
+      "name": "Place.MakeReservation"
+    }
+  ],
+  "entities": [
+    {
+      "name": "Calendar.Attendee"
+    },
+    {
+      "name": "Calendar.Location",
+      "inherits": {
+        "domain_name": "Calendar",
+        "model_name": "Location"
+      }
+    },
+    {
+      "name": "Calendar.Title"
+    },
+    {
+      "name": "Map.Aversion"
+    },
+    {
+      "name": "Map.Destination"
+    },
+    {
+      "name": "Map.RoutePreference"
+    },
+    {
+      "name": "Place.Name"
+    },
+    {
+      "name": "Place.Type"
+    }
+  ],
+  "composites": [
+    {
+      "name": "Map.Adjective",
+      "children": [
+        "Place.Rating",
+        "Place.Price"
+      ]
+    },
+    {
+      "name": "Map.PointOfInterest",
+      "children": [
+        "Place.Name",
+        "Place.Type"
+      ]
+    },
+    {
+      "name": "Place.Ordinal",
+      "children": [
+        "number",
+        "ordinal"
+      ]
+    }
+  ],
+  "closedLists": [
+    {
+      "name": "Calendar.Appointment",
+      "subLists": [
+        {
+          "canonicalForm": "予定",
+          "list": [
+            "イベント",
+            "タスク",
+            "手配",
+            "アラーム",
+            "会議"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Map.Proximity",
+      "subLists": [
+        {
+          "canonicalForm": "nearby",
+          "list": [
+            "close",
+            "near me",
+            "local",
+            "near by"
+          ]
+        },
+        {
+          "canonicalForm": "closest",
+          "list": [
+            "nearest"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Place.Price",
+      "subLists": [
+        {
+          "canonicalForm": "cheap",
+          "list": [
+            "inexpensive",
+            "modest"
+          ]
+        },
+        {
+          "canonicalForm": "cheapest",
+          "list": [
+            "least-expensive",
+            "least expensive"
+          ]
+        },
+        {
+          "canonicalForm": "expensive",
+          "list": [
+            "lavish",
+            "upscale",
+            "fancy",
+            "costly",
+            "extravagant",
+            "pricey",
+            "overpriced",
+            "over-priced",
+            "big-ticket",
+            "big ticket",
+            "excessive",
+            "exorbitant",
+            "posh",
+            "plush",
+            "swank",
+            "steep",
+            "artisan"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Place.Rating",
+      "subLists": [
+        {
+          "canonicalForm": "3-star",
+          "list": [
+            "three-star",
+            "3 star",
+            "three star",
+            "good",
+            "acceptable",
+            "favorable",
+            "satisfying",
+            "choice",
+            "pleasing",
+            "agreeable"
+          ]
+        },
+        {
+          "canonicalForm": "4-star",
+          "list": [
+            "four-star",
+            "4 star",
+            "four star",
+            "super",
+            "great",
+            "splendid",
+            "wonderful",
+            "excellent",
+            "fabulous",
+            "marvelous",
+            "impressive",
+            "tasty",
+            "nice",
+            "remarkable",
+            "fantastic",
+            "terrific",
+            "highly rated"
+          ]
+        },
+        {
+          "canonicalForm": "5-star",
+          "list": [
+            "five-star",
+            "5 star",
+            "five star",
+            "outstanding",
+            "exceptional",
+            "magnificent",
+            "perfect",
+            "top-notch",
+            "top notch",
+            "amazing",
+            "smashing",
+            "extraordinary",
+            "incredible",
+            "spectacular",
+            "superior",
+            "brilliant"
+          ]
+        }
+      ]
+    }
+  ],
+  "bing_entities": [
+    "datetime",
+    "dimension",
+    "number",
+    "ordinal"
+  ],
+  "actions": [],
+  "model_features": [
+    {
+      "name": "Place.Type",
+      "mode": true,
+      "words": "バー,ラウンジ,居酒屋,パブ,テリア,サルーン,スモークショップ,シガーラウンジ,コーヒーハウス,コーヒー,モール,ショッピングモール,アウトレットモール,プラザ,ショッピングセンター,食料品店,スーパー,食料,薬局,修理工場,メカニック,車の修理,自動修復,サービスセンター",
+      "activated": true
+    }
+  ],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "次のページ",
+      "intent": "Map.NextPage",
+      "entities": []
+    },
+    {
+      "text": "前のページ",
+      "intent": "Map.PreviousPage",
+      "entities": []
+    },
+    {
+      "text": "いや",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "これ以上はない",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "ここはどこですか",
+      "intent": "Map.Show",
+      "entities": []
+    },
+    {
+      "text": "次に",
+      "intent": "Map.NextPage",
+      "entities": []
+    },
+    {
+      "text": "違います",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "遠慮します",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "やり直す",
+      "intent": "Map.RestartListing",
+      "entities": []
+    },
+    {
+      "text": "先の",
+      "intent": "Map.PreviousPage",
+      "entities": []
+    },
+    {
+      "text": "表を予約する",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "私は終わった",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "いいえ結構です",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "予約をする",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "十分です",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "現在の場所",
+      "intent": "Map.Show",
+      "entities": []
+    },
+    {
+      "text": "テーブルを予約する",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "2番を選択",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "最後の1",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "どのように私はそこに着くか",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "私は終わった",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "そこに私を取得",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "アドレスしてください",
+      "intent": "Place.GetAddress",
+      "entities": []
+    },
+    {
+      "text": "自分の電話番号は何ですか",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "再度開始",
+      "intent": "Map.RestartListing",
+      "entities": []
+    },
+    {
+      "text": "現在地を表示する",
+      "intent": "Map.Show",
+      "entities": []
+    },
+    {
+      "text": "開いている",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "いつ開くか",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "バスキンロビンス・ロビンズ",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "ガイド私はそこに",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "地図を表示",
+      "intent": "Map.Show",
+      "entities": []
+    },
+    {
+      "text": "3に移動",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "私は2時月曜日オープン時間を持っていますか",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "停止方向",
+      "intent": "Map.StopDirections",
+      "entities": []
+    },
+    {
+      "text": "終了方向",
+      "intent": "Map.StopDirections",
+      "entities": []
+    },
+    {
+      "text": "方向を終了",
+      "intent": "Map.StopDirections",
+      "entities": []
+    },
+    {
+      "text": "Ubicación de la pantalla",
+      "intent": "Map.Show",
+      "entities": []
+    },
+    {
+      "text": "4番目の項目",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "número de artículo siete",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "ナンバーワンを選ぶ",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "6つ目を選択",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "5番目のアイテムを選択",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "オープン4",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "最初の1つに戻る",
+      "intent": "Map.RestartListing",
+      "entities": []
+    },
+    {
+      "text": "最初の項目に戻る",
+      "intent": "Map.RestartListing",
+      "entities": []
+    },
+    {
+      "text": "最初のページに戻る",
+      "intent": "Map.RestartListing",
+      "entities": []
+    },
+    {
+      "text": "スティーブバスラで会う, フィロスーザ, とジェニファー·ラミレススティーブのオフィスでの優先順位付けについて 2 P.M. で45分の次の水曜日",
+      "intent": "Calendar.CreateEvent",
+      "entities": []
+    },
+    {
+      "text": "デビッドツァイとプレストン doster との会議を追加します。60分金曜日の正午に建築レビューについてチューリング",
+      "intent": "Calendar.CreateEvent",
+      "entities": []
+    },
+    {
+      "text": "デビッドツァイ、ジェイミー chemuturi、スティーブバスラ、gk senthil、そして2時間のためのチューリングのジェニファー·ラミレスと明日の会議をスケジュールし、グローバル契約を越えて行く",
+      "intent": "Calendar.CreateEvent",
+      "entities": []
+    },
+    {
+      "text": "ステイシー、ジョン、デビー、ヘルマン、ジェイソンと2時間の融解ポットでジョニーの誕生日のための10月4日にイベントを作成します。",
+      "intent": "Calendar.CreateEvent",
+      "entities": []
+    },
+    {
+      "text": "90分の正午にネッドキュリックとデビッドツァイとアーバンスプーンで明日を満たすために私を思い出させる",
+      "intent": "Calendar.CreateEvent",
+      "entities": []
+    },
+    {
+      "text": "予約1時間予約ドクターエヴァンス来週月曜日に 3 P.M. でサドル緊急ケア",
+      "intent": "Calendar.CreateEvent",
+      "entities": []
+    },
+    {
+      "text": "6月3日の正午を保存するには4時間ハビエルのステイシーの誕生日パーティーです",
+      "intent": "Calendar.CreateEvent",
+      "entities": []
+    },
+    {
+      "text": "月曜日にデビッドツァイとの明確な会談",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "月曜日に提案のレビューを削除する",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "月曜日にティムの誕生日パーティーをキャンセル",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "金曜日に歯医者の予約をキャンセル",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "木曜日のクリアアーキテクチャデザインセッション",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "木曜日にジョンとステイシーとの予定を削除",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "プロジェクト五郎コードレビューを30分延長",
+      "intent": "Calendar.UpdateEvent",
+      "entities": []
+    },
+    {
+      "text": "月曜日の予算の見直しは、今毎週水曜日になります",
+      "intent": "Calendar.UpdateEvent",
+      "entities": []
+    },
+    {
+      "text": "モバイル戦略セッションを来週に移動する",
+      "intent": "Calendar.UpdateEvent",
+      "entities": []
+    },
+    {
+      "text": "9 A.M. で火曜日にプロジェクトの後援会を変更します。",
+      "intent": "Calendar.UpdateEvent",
+      "entities": []
+    },
+    {
+      "text": "木曜日に来週の月曜日にスプリントのレビューを再スケジュール",
+      "intent": "Calendar.UpdateEvent",
+      "entities": []
+    },
+    {
+      "text": "るつぼの住所",
+      "intent": "Place.GetAddress",
+      "entities": []
+    },
+    {
+      "text": "どのように良いタコベルです",
+      "intent": "Place.GetRating",
+      "entities": []
+    },
+    {
+      "text": "牛カクの評価",
+      "intent": "Place.GetRating",
+      "entities": []
+    },
+    {
+      "text": "ボブのチョップの家のための評価は何であるか",
+      "intent": "Place.GetRating",
+      "entities": []
+    },
+    {
+      "text": "リングジョンのダイナー",
+      "intent": "Place.Call",
+      "entities": []
+    },
+    {
+      "text": "コールネッドキュリック",
+      "intent": "Place.Call",
+      "entities": []
+    },
+    {
+      "text": "ダイヤル水寿司",
+      "intent": "Place.Call",
+      "entities": []
+    },
+    {
+      "text": "日曜日にスターバックのオープンです",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "どのように遅く薬局オープンです",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "何がはじめブラザーズの時間です",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "バスキンロビンスロビンズオープンです",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "5 P.M. で酪農クイーンオープンです",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "wokcano を開くとき",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "私はルビーのダイナーの電話番号を持つことができます",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "flemmings の電話番号は何ですか",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "ディズニーランドの連絡先番号",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "魔法の山の接触数",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "ギリシャの島々の電話番号",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "アップルストアの電話番号",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "yardhouse でタップしているもの",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "デニーズのメニューにあるもの",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "バンブーガーデンメニューの提供",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "牛カクのメニュー",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "ショーカールの jr メニュー",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "ジャスパーのメニューを表示する",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "クッチーナの価格帯",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "水寿司の代表的な価格",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "ザンダーのピザの平均価格",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "クッチーナ alessa 高価です",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "リトルシーザーのピザは安いです",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "ディズニーランドの表示価格",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "ダラス/プラノマリオットレガシータウンセンターの近くにある中国の素晴らしいレストランのリストを表示する",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "アーバイン、カリフォルニア州の5分以内に例外的なフォンデュレストランのリストを表示する",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "5905レガシー dr の5マイル以内に格安ガソリンスタンドのリストを表示する",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "5分以内に卓越したブラジルステーキに私を導く",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "地元の卓越したが安いアイスクリームに私を導く",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "シアトルの15分以内にオリーブガーデンイタリアンレストランに私を導く",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "123メイン st の15分以内に最も安いガソリンスタンドにガイド",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "ナタラジタンドリーは、ジャンボリーから5マイル以内にあります。",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "ここで、プラノの20マイル以内に例外的な日本のバーベキューです",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "ここで、私はジョンウェイン空港の5分以内にまともなタンドリーを見つけることができます",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "アーバイン blvd の15分以内にバスキンロビンスロビンスアイスクリームを見つける",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "シアトルの5マイル以内に壮大なアイスクリームを見つける",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "今開いている偉大な地元のタコスを見つける",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "アロフトの5マイル以内に良い安い中国を探して",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "ロサンゼルスの5分以内に素晴らしいメキシコを探しています",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "5905レガシードライブの近くに5つ星トヨタ修理店を探して",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "20分以内にオープンスペースの駐車ガレージを検索",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "lax から1マイル以内の格安駐車場を検索",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "5905レガシードライブの近くにある食料品店を検索",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "ジョン・ウェイン空港から5マイル以内にある優れたトヨタ・サービス・センターを探す",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "ロサンゼルスの5分以内に良いピザを見つける",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "5905レガシードライブの近くに例外的な寿司を見つける",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "5905レガシードライブの5マイル以内に任意の安価な駐車場があります",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "タスティン、カリフォルニア州の5マイル以内に任意の素晴らしいが安いトヨタの修理店はありますか",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "dfw 空港の近くに特別な寿司レストランはありますか",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "私は123メイン st の5マイル以内に幻想的なトヨタのサービスセンターが必要です",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "私は地元の素晴らしいイタリアンレストランが必要です",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "私はテキサス州オースティンに地元の偉大なステーキハウスを必要とする",
+      "intent": "Map.Search",
+      "entities": []
+    },
+    {
+      "text": "最もよい買物をする最も安い方法は左の回転を避ける",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "dfw は通行料を避けるために最速の方法",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "有料道路を避けながら、どのように私はダラス/プラノマリオットレガシータウンセンターに着くのですか",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "高速道路を避けながら、1月の家への最短の方法",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "最寄りの酪農女王にガイドし、高速道路を避ける",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "トヨタのディーラーに私を取得する高速道路を避ける",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "電子貿易金融サービスへのルートは、有料道路を避ける",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "シルバーフォックスへの道順は、高速道路を避ける",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "オープンパンダエクスプレス",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "るつぼの選択",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "私は3番目の希望",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "私は wokcano をしたいと思います",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "私のオフィスに dave と1:1 を移動",
+      "intent": "Calendar.UpdateEvent",
+      "entities": []
+    },
+    {
+      "text": "戦略計画セッションの場所をエグゼクティブ会議室に変更",
+      "intent": "Calendar.UpdateEvent",
+      "entities": []
+    },
+    {
+      "text": "7 P.M. の空室状況をチェックする6月13日1時間",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "90分の 8 A.M. オープンで木曜日です",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "午前2時間の正午に無料です",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "どのように私のカレンダーは6月13日 6 P.M. で1時間を見て",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "私のスケジュールは、5 P.M. で4時間の2月29日にオープンしています",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "7 P.M. で次の金曜日にテキサスデブラジルで6のためのテーブルを予約",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "6 P.M. で6月3日にハビエルの2の予約",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "次の火曜日に 5:30 pm にるつぼで4つのテーブルを予約",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "私はアゴラ churrascaria を見てみましょう",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "次のページを表示する",
+      "intent": "Map.NextPage",
+      "entities": []
+    },
+    {
+      "text": "前のページを表示する",
+      "intent": "Map.PreviousPage",
+      "entities": []
+    },
+    {
+      "text": "私のアドレスを与える",
+      "intent": "Place.GetAddress",
+      "entities": []
+    },
+    {
+      "text": "彼らの住所は何ですか",
+      "intent": "Place.GetAddress",
+      "entities": []
+    },
+    {
+      "text": "どのように遅い彼らは開いている",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "その時間は何ですか",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "メニューの内容",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "メニューを表示する",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "メニューを表示する",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "私はその番号を持つことができます",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "彼らは安いです",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "どのように高価です",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "どのような価格帯です",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "どのくらいのプレートあたり",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "アゴラ churrascaria を見てみましょう",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "溶ける鍋がいいですね",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "次の土曜日の正午に7のテーブルを予約する",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "10 A.M. で4月1日に3つの予約",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "月曜日の午後7:30 時に5つのテーブルを予約",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "通行料の道を避ける最も安い方法",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "左ターンを回避しながらそこに最速の方法",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "通行料を避けながらそこに着く方法",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "高速道路を避けるための最短の方法",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "通行料を避けながらそこにガイド",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "私を取得するが、左折を避ける",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "ルートは、高速道路を避ける",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "通行料の道を避けている間そこの方向",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "そこにルート",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "そこの方向",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "そこにルートをマップする",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "そこに着く最も安い方法",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "どのような最速の方法がある",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "最短の方法がある",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "4:30 で月曜日に明確な任命",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "次の金曜日に会議を3で削除",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "今日の正午に会議をキャンセルする",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    }
+  ]
+}

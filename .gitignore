@@ -9,6 +9,6 @@ google-credentials.json
 /npm-debug.log
 /Digital-Assistant.njsproj
 /Digital-Assistant.sln
-Driver Assist *.json
 /Test Notes.txt
 *.config
+*.env

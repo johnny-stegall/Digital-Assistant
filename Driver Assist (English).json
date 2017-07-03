@@ -1,0 +1,2133 @@
+{
+  "luis_schema_version": "2.1.0",
+  "versionId": "0.1",
+  "name": "Driver Assist (English)",
+  "desc": "Helps English drivers get the address or directions for a point-of-interest, and schedule, cancel, or call into meetings.",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "Calendar.CreateEvent"
+    },
+    {
+      "name": "Calendar.DeleteEvent"
+    },
+    {
+      "name": "Calendar.IsAvailable"
+    },
+    {
+      "name": "Calendar.UpdateEvent"
+    },
+    {
+      "name": "Dialog.End"
+    },
+    {
+      "name": "Map.NextPage"
+    },
+    {
+      "name": "Map.PreviousPage"
+    },
+    {
+      "name": "Map.RestartListing"
+    },
+    {
+      "name": "Map.Search"
+    },
+    {
+      "name": "Map.Selection"
+    },
+    {
+      "name": "Map.Show"
+    },
+    {
+      "name": "Map.StopDirections"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "Place.Call"
+    },
+    {
+      "name": "Place.GetAddress"
+    },
+    {
+      "name": "Place.GetDirections"
+    },
+    {
+      "name": "Place.GetHours"
+    },
+    {
+      "name": "Place.GetMenu"
+    },
+    {
+      "name": "Place.GetPhoneNumber"
+    },
+    {
+      "name": "Place.GetPriceRange"
+    },
+    {
+      "name": "Place.GetRating"
+    },
+    {
+      "name": "Place.MakeReservation"
+    }
+  ],
+  "entities": [
+    {
+      "name": "Calendar.Attendee"
+    },
+    {
+      "name": "Calendar.Location",
+      "inherits": {
+        "domain_name": "Calendar",
+        "model_name": "Location"
+      }
+    },
+    {
+      "name": "Calendar.Title"
+    },
+    {
+      "name": "Map.Aversion"
+    },
+    {
+      "name": "Map.Destination"
+    },
+    {
+      "name": "Map.RoutePreference"
+    },
+    {
+      "name": "Place.Name"
+    },
+    {
+      "name": "Place.Type"
+    }
+  ],
+  "composites": [
+    {
+      "name": "Map.Adjective",
+      "children": [
+        "Place.Rating",
+        "Place.Price"
+      ]
+    },
+    {
+      "name": "Map.PointOfInterest",
+      "children": [
+        "Place.Name",
+        "Place.Type"
+      ]
+    },
+    {
+      "name": "Place.Ordinal",
+      "children": [
+        "number",
+        "ordinal"
+      ]
+    }
+  ],
+  "closedLists": [
+    {
+      "name": "Calendar.Appointment",
+      "subLists": [
+        {
+          "canonicalForm": "appointment",
+          "list": [
+            "event",
+            "task",
+            "arrangements",
+            "reminder",
+            "meeting"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Map.Proximity",
+      "subLists": [
+        {
+          "canonicalForm": "nearby",
+          "list": [
+            "close",
+            "near me",
+            "local",
+            "near by"
+          ]
+        },
+        {
+          "canonicalForm": "closest",
+          "list": [
+            "nearest"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Place.Price",
+      "subLists": [
+        {
+          "canonicalForm": "cheap",
+          "list": [
+            "inexpensive",
+            "modest"
+          ]
+        },
+        {
+          "canonicalForm": "cheapest",
+          "list": [
+            "least-expensive",
+            "least expensive"
+          ]
+        },
+        {
+          "canonicalForm": "expensive",
+          "list": [
+            "lavish",
+            "upscale",
+            "fancy",
+            "costly",
+            "extravagant",
+            "pricey",
+            "overpriced",
+            "over-priced",
+            "big-ticket",
+            "big ticket",
+            "excessive",
+            "exorbitant",
+            "posh",
+            "plush",
+            "swank",
+            "steep",
+            "artisan"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Place.Rating",
+      "subLists": [
+        {
+          "canonicalForm": "3-star",
+          "list": [
+            "three-star",
+            "3 star",
+            "three star",
+            "good",
+            "acceptable",
+            "favorable",
+            "satisfying",
+            "choice",
+            "pleasing",
+            "agreeable"
+          ]
+        },
+        {
+          "canonicalForm": "4-star",
+          "list": [
+            "four-star",
+            "4 star",
+            "four star",
+            "super",
+            "great",
+            "splendid",
+            "wonderful",
+            "excellent",
+            "fabulous",
+            "marvelous",
+            "impressive",
+            "tasty",
+            "nice",
+            "remarkable",
+            "fantastic",
+            "terrific",
+            "highly rated"
+          ]
+        },
+        {
+          "canonicalForm": "5-star",
+          "list": [
+            "five-star",
+            "5 star",
+            "five star",
+            "outstanding",
+            "exceptional",
+            "magnificent",
+            "perfect",
+            "top-notch",
+            "top notch",
+            "amazing",
+            "smashing",
+            "extraordinary",
+            "incredible",
+            "spectacular",
+            "superior",
+            "brilliant"
+          ]
+        }
+      ]
+    }
+  ],
+  "bing_entities": [
+    "datetimeV2",
+    "dimension",
+    "geography",
+    "number",
+    "ordinal"
+  ],
+  "actions": [],
+  "model_features": [
+    {
+      "name": "Place.Type",
+      "mode": true,
+      "words": "bar,lounge,tavern,pub,osteria,saloon,smoke shop,cigar lounge,hookah bar,tobacco house,tobacco shop,vape bar,vape shop,vape house,cigar house,coffee house,coffee,mall,shopping mall,outlet mall,plaza,shopping center,grocery store,supermarket,groceries,pharmacy,repair shop,watering hole,mechanic,car repair,auto repair,automotive repair,service center",
+      "activated": true
+    }
+  ],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "next page",
+      "intent": "Map.NextPage",
+      "entities": []
+    },
+    {
+      "text": "previous page",
+      "intent": "Map.PreviousPage",
+      "entities": []
+    },
+    {
+      "text": "nope",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "no more",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "where am i",
+      "intent": "Map.Show",
+      "entities": []
+    },
+    {
+      "text": "next",
+      "intent": "Map.NextPage",
+      "entities": []
+    },
+    {
+      "text": "no",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "no thanks",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "start over",
+      "intent": "Map.RestartListing",
+      "entities": []
+    },
+    {
+      "text": "previous",
+      "intent": "Map.PreviousPage",
+      "entities": []
+    },
+    {
+      "text": "book a table",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "i'm done",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "no thank you",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "make a reservation",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "that's enough",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "current location",
+      "intent": "Map.Show",
+      "entities": []
+    },
+    {
+      "text": "reserve a table",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "select number two",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "last one",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "how do i get there",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "i'm finished",
+      "intent": "Dialog.End",
+      "entities": []
+    },
+    {
+      "text": "get me there",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "address please",
+      "intent": "Place.GetAddress",
+      "entities": []
+    },
+    {
+      "text": "what is their phone number",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "begin again",
+      "intent": "Map.RestartListing",
+      "entities": []
+    },
+    {
+      "text": "show my location",
+      "intent": "Map.Show",
+      "entities": []
+    },
+    {
+      "text": "are they open",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "when do they open",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "baskin robbins",
+      "intent": "Map.Selection",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 0,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "guide me there",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "display map",
+      "intent": "Map.Show",
+      "entities": []
+    },
+    {
+      "text": "go to 3",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "do i have an hour open monday at 2",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "stop directions",
+      "intent": "Map.StopDirections",
+      "entities": []
+    },
+    {
+      "text": "end directions",
+      "intent": "Map.StopDirections",
+      "entities": []
+    },
+    {
+      "text": "quit directions",
+      "intent": "Map.StopDirections",
+      "entities": []
+    },
+    {
+      "text": "display location",
+      "intent": "Map.Show",
+      "entities": []
+    },
+    {
+      "text": "fourth item",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "item number seven",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "choose number one",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "select the sixth one",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "select the fifth item",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "open four",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "return to the first one",
+      "intent": "Map.RestartListing",
+      "entities": []
+    },
+    {
+      "text": "return to the first item",
+      "intent": "Map.RestartListing",
+      "entities": []
+    },
+    {
+      "text": "return to the first page",
+      "intent": "Map.RestartListing",
+      "entities": []
+    },
+    {
+      "text": "meet with steve basra, filo d'souza, and jennifer ramirez about prioritization in steve's office next wednesday at 2 pm for 45 minutes",
+      "intent": "Calendar.CreateEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 64,
+          "endPos": 80
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 10,
+          "endPos": 20
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 23,
+          "endPos": 34
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 41,
+          "endPos": 56
+        },
+        {
+          "entity": "Calendar.Location",
+          "startPos": 85,
+          "endPos": 98
+        }
+      ]
+    },
+    {
+      "text": "add a meeting with david tsai and preston doster in turing about architecture review for 60 minutes friday at noon",
+      "intent": "Calendar.CreateEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 65,
+          "endPos": 83
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 19,
+          "endPos": 28
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 34,
+          "endPos": 47
+        },
+        {
+          "entity": "Calendar.Location",
+          "startPos": 52,
+          "endPos": 57
+        }
+      ]
+    },
+    {
+      "text": "schedule a meeting tomorrow with david tsai, vijay chemuturi, steve basra, gk senthil, and jennifer ramirez in turing for 2 hours to go over the global agreement",
+      "intent": "Calendar.CreateEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 145,
+          "endPos": 167
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 33,
+          "endPos": 42
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 45,
+          "endPos": 59
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 62,
+          "endPos": 72
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 75,
+          "endPos": 84
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 91,
+          "endPos": 106
+        },
+        {
+          "entity": "Calendar.Location",
+          "startPos": 111,
+          "endPos": 116
+        }
+      ]
+    },
+    {
+      "text": "create an event on october 4th for johnny's birthday at the melting pot with stacy, john, debbie, hermann, and jason for 2 hours",
+      "intent": "Calendar.CreateEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 35,
+          "endPos": 51
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 77,
+          "endPos": 81
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 84,
+          "endPos": 87
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 90,
+          "endPos": 95
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 98,
+          "endPos": 104
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 111,
+          "endPos": 115
+        },
+        {
+          "entity": "Calendar.Location",
+          "startPos": 56,
+          "endPos": 70
+        }
+      ]
+    },
+    {
+      "text": "remind me to meet tomorrow at urban spoon with ned curic and david tsai at noon for 90 minutes",
+      "intent": "Calendar.CreateEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 47,
+          "endPos": 55
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 61,
+          "endPos": 70
+        },
+        {
+          "entity": "Calendar.Location",
+          "startPos": 30,
+          "endPos": 40
+        }
+      ]
+    },
+    {
+      "text": "book a one hour appointment with doctor evans next monday at 3 pm at saddleback urgent care",
+      "intent": "Calendar.CreateEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 33,
+          "endPos": 44
+        },
+        {
+          "entity": "Calendar.Location",
+          "startPos": 69,
+          "endPos": 90
+        }
+      ]
+    },
+    {
+      "text": "save the date noon on june 3rd is stacy's birthday party at javier's for 4 hours",
+      "intent": "Calendar.CreateEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 34,
+          "endPos": 55
+        },
+        {
+          "entity": "Calendar.Location",
+          "startPos": 60,
+          "endPos": 67
+        }
+      ]
+    },
+    {
+      "text": "clear meeting with david tsai on monday",
+      "intent": "Calendar.DeleteEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 19,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "remove proposal review on monday",
+      "intent": "Calendar.DeleteEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 7,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "cancel tim's birthday party on monday",
+      "intent": "Calendar.DeleteEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 7,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "cancel dentist appointment on friday",
+      "intent": "Calendar.DeleteEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 7,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "clear architecture design session on thursday",
+      "intent": "Calendar.DeleteEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 6,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "remove appointment with john and stacy on thursday",
+      "intent": "Calendar.DeleteEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 24,
+          "endPos": 27
+        },
+        {
+          "entity": "Calendar.Attendee",
+          "startPos": 33,
+          "endPos": 37
+        }
+      ]
+    },
+    {
+      "text": "extend project goro code review by 30 minutes",
+      "intent": "Calendar.UpdateEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 7,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "budget review on mondays will now be every wednesday",
+      "intent": "Calendar.UpdateEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 0,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "move mobile strategy session to next week",
+      "intent": "Calendar.UpdateEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 5,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "change the project sponsorship meeting to tuesday at 9 am",
+      "intent": "Calendar.UpdateEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 11,
+          "endPos": 37
+        }
+      ]
+    },
+    {
+      "text": "reschedule sprint review on thursday to next monday",
+      "intent": "Calendar.UpdateEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 11,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "address of the melting pot",
+      "intent": "Place.GetAddress",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 11,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "how good is taco bell",
+      "intent": "Place.GetRating",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 12,
+          "endPos": 20
+        }
+      ]
+    },
+    {
+      "text": "rating for gyu-kaku",
+      "intent": "Place.GetRating",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 11,
+          "endPos": 18
+        }
+      ]
+    },
+    {
+      "text": "what is the rating for bob's chop house",
+      "intent": "Place.GetRating",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 23,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "ring john's diner",
+      "intent": "Place.Call",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 5,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "call ned curic",
+      "intent": "Place.Call",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 5,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "dial mizu sushi",
+      "intent": "Place.Call",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 5,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "is starbuck's open on sunday",
+      "intent": "Place.GetHours",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 3,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "how late is the pharmacy open",
+      "intent": "Place.GetHours",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 16,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "what are the hours of stater bros",
+      "intent": "Place.GetHours",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 22,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "is baskin robbins open",
+      "intent": "Place.GetHours",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 3,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "is dairy queen open at 5 pm",
+      "intent": "Place.GetHours",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 3,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "when does wokcano open",
+      "intent": "Place.GetHours",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 10,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "can i have the phone number of ruby's diner",
+      "intent": "Place.GetPhoneNumber",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 31,
+          "endPos": 42
+        }
+      ]
+    },
+    {
+      "text": "what is the phone number of flemmings",
+      "intent": "Place.GetPhoneNumber",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 28,
+          "endPos": 36
+        }
+      ]
+    },
+    {
+      "text": "disneyland contact number",
+      "intent": "Place.GetPhoneNumber",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 0,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "contact number of magic mountain",
+      "intent": "Place.GetPhoneNumber",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 18,
+          "endPos": 31
+        }
+      ]
+    },
+    {
+      "text": "phone number of greek islands",
+      "intent": "Place.GetPhoneNumber",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 16,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "apple store phone number",
+      "intent": "Place.GetPhoneNumber",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 0,
+          "endPos": 10
+        }
+      ]
+    },
+    {
+      "text": "what is on tap at yardhouse",
+      "intent": "Place.GetMenu",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 18,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "what is on the denny's menu",
+      "intent": "Place.GetMenu",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 15,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "provide bamboo garden menu",
+      "intent": "Place.GetMenu",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 8,
+          "endPos": 20
+        }
+      ]
+    },
+    {
+      "text": "menu of gyu-kaku",
+      "intent": "Place.GetMenu",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 8,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "show carl's jr menu",
+      "intent": "Place.GetMenu",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 5,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "display jasper's menu",
+      "intent": "Place.GetMenu",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 8,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "price range at mi cucina",
+      "intent": "Place.GetPriceRange",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 15,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "typical price at mizu sushi",
+      "intent": "Place.GetPriceRange",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 17,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "average price at zander's pizza",
+      "intent": "Place.GetPriceRange",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 17,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "is cucina alessa expensive",
+      "intent": "Place.GetPriceRange",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 3,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "is little caesar's pizza cheap",
+      "intent": "Place.GetPriceRange",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 3,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "display price of disneyland",
+      "intent": "Place.GetPriceRange",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 17,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "show me a list of great chinese restaurants near dallas/plano marriott legacy town center",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 49,
+          "endPos": 88
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 24,
+          "endPos": 42
+        }
+      ]
+    },
+    {
+      "text": "show me a list of exceptional fondue restaurants within 5 minutes of irvine, ca",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 69,
+          "endPos": 78
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 30,
+          "endPos": 47
+        }
+      ]
+    },
+    {
+      "text": "show me a list of cheap gas stations within 5 miles of 5905 legacy dr",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 55,
+          "endPos": 68
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 24,
+          "endPos": 35
+        }
+      ]
+    },
+    {
+      "text": "guide me to outstanding brazillian steakhouses within 5 minutes",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Place.Type",
+          "startPos": 24,
+          "endPos": 45
+        }
+      ]
+    },
+    {
+      "text": "guide me to local outstanding but cheap ice cream",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Place.Type",
+          "startPos": 40,
+          "endPos": 48
+        }
+      ]
+    },
+    {
+      "text": "guide me to olive garden italian restaurant within 15 minutes of seattle",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 12,
+          "endPos": 23
+        },
+        {
+          "entity": "Map.Destination",
+          "startPos": 65,
+          "endPos": 71
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 25,
+          "endPos": 42
+        }
+      ]
+    },
+    {
+      "text": "guide me to the cheapest gas station within 15 minutes of 123 main st",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 58,
+          "endPos": 68
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 25,
+          "endPos": 35
+        }
+      ]
+    },
+    {
+      "text": "where is natraj tandoori within 5 miles of jamboree",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 9,
+          "endPos": 23
+        },
+        {
+          "entity": "Map.Destination",
+          "startPos": 43,
+          "endPos": 50
+        }
+      ]
+    },
+    {
+      "text": "where is exceptional japanese bbq within 20 miles of plano",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 53,
+          "endPos": 57
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 21,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "where can i find a decent tandoori within 5 minutes of john wayne airport",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 55,
+          "endPos": 72
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 26,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "find baskin robbins ice cream within 15 minutes of irvine blvd",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 5,
+          "endPos": 18
+        },
+        {
+          "entity": "Map.Destination",
+          "startPos": 51,
+          "endPos": 61
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 20,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "find magnificent ice cream within 5 miles of seattle",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 45,
+          "endPos": 51
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 17,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "find great local tacos that are open now",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Place.Type",
+          "startPos": 17,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "looking for good cheap chinese within 5 miles of aloft",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Adjective",
+          "startPos": 12,
+          "endPos": 21
+        },
+        {
+          "entity": "Map.Destination",
+          "startPos": 49,
+          "endPos": 53
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 23,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "looking for awesome mexican within 5 minutes of los angeles",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 48,
+          "endPos": 58
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 20,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "looking for five star toyota repair shop near 5905 legacy drive",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 46,
+          "endPos": 62
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 22,
+          "endPos": 39
+        }
+      ]
+    },
+    {
+      "text": "search for parking garages with open spaces within 20 minutes",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Place.Type",
+          "startPos": 11,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "search for cheap parking within 1 mile of lax",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 42,
+          "endPos": 44
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 17,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "search for grocery stores that are near 5905 legacy drive",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 40,
+          "endPos": 56
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 11,
+          "endPos": 24
+        }
+      ]
+    },
+    {
+      "text": "locate an outstanding toyota service center within 5 miles of john wayne airport",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 62,
+          "endPos": 79
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 22,
+          "endPos": 42
+        }
+      ]
+    },
+    {
+      "text": "locate good pizza within 5 minutes of los angeles",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 38,
+          "endPos": 48
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 12,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "locate exceptional sushi near 5905 legacy drive",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 30,
+          "endPos": 46
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 19,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "are there any cheap parking garages within 5 miles of 5905 legacy drive",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 54,
+          "endPos": 70
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 20,
+          "endPos": 34
+        }
+      ]
+    },
+    {
+      "text": "are there any great but cheap toyota repair shops within 5 miles of tustin, ca",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Adjective",
+          "startPos": 14,
+          "endPos": 28
+        },
+        {
+          "entity": "Map.Destination",
+          "startPos": 68,
+          "endPos": 77
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 30,
+          "endPos": 48
+        }
+      ]
+    },
+    {
+      "text": "are there any exceptional sushi restaurants near dfw airport",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 49,
+          "endPos": 59
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 26,
+          "endPos": 42
+        }
+      ]
+    },
+    {
+      "text": "i need a fantastic toyota service center within 5 miles of 123 main st",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 19,
+          "endPos": 39
+        },
+        {
+          "entity": "Map.Destination",
+          "startPos": 59,
+          "endPos": 69
+        }
+      ]
+    },
+    {
+      "text": "i need a local superb italian restaurant",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Place.Type",
+          "startPos": 22,
+          "endPos": 39
+        }
+      ]
+    },
+    {
+      "text": "i need a great steak house local to austin texas",
+      "intent": "Map.Search",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 36,
+          "endPos": 47
+        },
+        {
+          "entity": "Place.Type",
+          "startPos": 15,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "cheapest way to best buy avoid left turns",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 16,
+          "endPos": 31
+        },
+        {
+          "entity": "Map.Aversion",
+          "startPos": 39,
+          "endPos": 48
+        }
+      ]
+    },
+    {
+      "text": "fastest way to dfw avoid tolls",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 15,
+          "endPos": 17
+        },
+        {
+          "entity": "Map.Aversion",
+          "startPos": 25,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "how do i get to dallas/plano marriot legacy town center while avoiding toll roads",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 16,
+          "endPos": 54
+        },
+        {
+          "entity": "Map.Aversion",
+          "startPos": 71,
+          "endPos": 80
+        }
+      ]
+    },
+    {
+      "text": "shortest way to jan's house while avoiding highways",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 16,
+          "endPos": 31
+        },
+        {
+          "entity": "Map.Aversion",
+          "startPos": 48,
+          "endPos": 55
+        }
+      ]
+    },
+    {
+      "text": "guide me to the nearest dairy queen and avoid highways",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 24,
+          "endPos": 34
+        },
+        {
+          "entity": "Map.Aversion",
+          "startPos": 46,
+          "endPos": 53
+        }
+      ]
+    },
+    {
+      "text": "get me to a toyota dealership avoid freeways",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 12,
+          "endPos": 28
+        },
+        {
+          "entity": "Map.Aversion",
+          "startPos": 36,
+          "endPos": 43
+        }
+      ]
+    },
+    {
+      "text": "route to e-trade financial services avoid toll roads",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 9,
+          "endPos": 33
+        },
+        {
+          "entity": "Map.Aversion",
+          "startPos": 41,
+          "endPos": 50
+        }
+      ]
+    },
+    {
+      "text": "directions to the silver fox avoid freeways",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Destination",
+          "startPos": 14,
+          "endPos": 27
+        },
+        {
+          "entity": "Map.Aversion",
+          "startPos": 35,
+          "endPos": 42
+        }
+      ]
+    },
+    {
+      "text": "open panda express",
+      "intent": "Map.Selection",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 5,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "select melting pot",
+      "intent": "Map.Selection",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 7,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "i would like the third",
+      "intent": "Map.Selection",
+      "entities": []
+    },
+    {
+      "text": "i would like wokcano",
+      "intent": "Map.Selection",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 13,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "move 1:1 with dave to my office",
+      "intent": "Calendar.UpdateEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 5,
+          "endPos": 17
+        },
+        {
+          "entity": "Calendar.Location",
+          "startPos": 22,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "change location of strategy planning session to executive conference room",
+      "intent": "Calendar.UpdateEvent",
+      "entities": [
+        {
+          "entity": "Calendar.Title",
+          "startPos": 19,
+          "endPos": 43
+        },
+        {
+          "entity": "Calendar.Location",
+          "startPos": 48,
+          "endPos": 72
+        }
+      ]
+    },
+    {
+      "text": "check availability at 7 pm on june 13th for 1 hour",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "is thursday at 8 am open for 90 minutes",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "am i free at noon for 2 hours",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "how does my calendar look on june 13th at 6 pm for 1 hour",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "is my schedule open on february 29th for 4 hours at 5 pm",
+      "intent": "Calendar.IsAvailable",
+      "entities": []
+    },
+    {
+      "text": "reserve a table for 6 at texas de brazil next friday at 7 pm",
+      "intent": "Place.MakeReservation",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 25,
+          "endPos": 39
+        }
+      ]
+    },
+    {
+      "text": "reservation at javier's for 2 on june 3rd at 6 pm",
+      "intent": "Place.MakeReservation",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 15,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "book a table for four at the melting pot at 5:30 pm next tuesday",
+      "intent": "Place.MakeReservation",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 25,
+          "endPos": 39
+        }
+      ]
+    },
+    {
+      "text": "let me see agora churrascaria",
+      "intent": "Map.Selection",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 11,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "show me the next page",
+      "intent": "Map.NextPage",
+      "entities": []
+    },
+    {
+      "text": "show me the previous page",
+      "intent": "Map.PreviousPage",
+      "entities": []
+    },
+    {
+      "text": "give me their address",
+      "intent": "Place.GetAddress",
+      "entities": []
+    },
+    {
+      "text": "what's their address",
+      "intent": "Place.GetAddress",
+      "entities": []
+    },
+    {
+      "text": "how late are they open",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "what are their hours",
+      "intent": "Place.GetHours",
+      "entities": []
+    },
+    {
+      "text": "what is on their menu",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "display their menu",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "show their menu",
+      "intent": "Place.GetMenu",
+      "entities": []
+    },
+    {
+      "text": "can i have their number",
+      "intent": "Place.GetPhoneNumber",
+      "entities": []
+    },
+    {
+      "text": "are they cheap",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "how expensive are they",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "what is their price range",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "how much per plate",
+      "intent": "Place.GetPriceRange",
+      "entities": []
+    },
+    {
+      "text": "let's see agora churrascaria",
+      "intent": "Map.Selection",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 10,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "the melting pot sounds good",
+      "intent": "Map.Selection",
+      "entities": [
+        {
+          "entity": "Place.Name",
+          "startPos": 0,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "reserve a table for 7 next saturday at noon",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "reservation for three on april 1st at 10 am",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "book a table for five at 7:30 pm on monday",
+      "intent": "Place.MakeReservation",
+      "entities": []
+    },
+    {
+      "text": "cheapest way there avoid toll roads",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Aversion",
+          "startPos": 25,
+          "endPos": 34
+        }
+      ]
+    },
+    {
+      "text": "fastest way there while avoiding left turns",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Aversion",
+          "startPos": 33,
+          "endPos": 42
+        }
+      ]
+    },
+    {
+      "text": "how do i get there while avoiding tolls",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Aversion",
+          "startPos": 34,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "shortest way there avoid freeways",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Aversion",
+          "startPos": 25,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "guide me there while avoiding tolls",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Aversion",
+          "startPos": 21,
+          "endPos": 34
+        }
+      ]
+    },
+    {
+      "text": "get me there but avoid left turns",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Aversion",
+          "startPos": 23,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "route there avoid freeways",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Aversion",
+          "startPos": 18,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "directions there while avoiding toll roads",
+      "intent": "Place.GetDirections",
+      "entities": [
+        {
+          "entity": "Map.Aversion",
+          "startPos": 32,
+          "endPos": 41
+        }
+      ]
+    },
+    {
+      "text": "route there",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "directions there",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "map a route there",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "cheapest way to get there",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "what is the fastest way there",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "shortest way there",
+      "intent": "Place.GetDirections",
+      "entities": []
+    },
+    {
+      "text": "clear appointment on monday at 4:30",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "remove meeting next friday at 3",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    },
+    {
+      "text": "cancel meeting today at noon",
+      "intent": "Calendar.DeleteEvent",
+      "entities": []
+    }
+  ]
+}

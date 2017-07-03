@@ -345,14 +345,14 @@ function getNewToken(oauth2Client, callback)
   {
     let authTokenRetrieved = false;
 
-    oauth2Client.getToken(authCode, (e, token) =>
+    oauth2Client.getToken(authCode, (e, authToken) =>
     {
       if (e)
         throw new Error(`Failed to retrieve an access token: ${e}.`);
       else
       {
         authTokenRetrieved = true;
-        oauth2Client.credentials = token;
+        oauth2Client.credentials = authToken;
         fs.writeFileSync(TOKEN_PATH, JSON.stringify(authToken));
         console.log("Auth token stored.");
 
