@@ -64,7 +64,7 @@ class GoogleCalendar extends CalendarApi
     if (attendees)
     {
       for (let attendeeIndex = 0; attendeeIndex < attendees.length; attendeeIndex++) 
-        event.attendees.push({ "email": this.resolveEmail(attendees[attendeeIndex].entity) });
+        event.attendees.push({ "email": resolveEmail(attendees[attendeeIndex]) });
     }
 
     return new Promise((resolve, reject) =>

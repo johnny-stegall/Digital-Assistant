@@ -78,7 +78,7 @@ class Calendar
     let timeEntity = this.botBuilder.EntityRecognizer.findEntity(args.entities, "builtin.datetimeV2.time");
     let durationEntity = this.botBuilder.EntityRecognizer.findEntity(args.entities, "builtin.datetimeV2.duration");
     let duration = durationEntity ? durationEntity.resolution.values[durationEntity.resolution.values.length - 1].value / 60 : 60;
-    let dateTime = toDate(dateTimeEntity, dateEntity, timeEntity);;
+    let dateTime = toDate(dateTimeEntity, dateEntity, timeEntity);
 
     if (isNaN(dateTime))
     {
@@ -86,11 +86,13 @@ class Calendar
       return;
     }
 
-    let attendees = buildAttendeeList(attendeeEntities);
-    let title = buildTitle(titleEntity, appointmentEntity, attendees, session);
+    let attendees = attendeeEntities.map(element => element.entity);
+    let attendeeList = buildAttendeeList(attendeeEntities);
+    let title = buildTitle(titleEntity, appointmentEntity, attendeeList, session);
+    let location = locationEntity ? locationEntity.entity : null;
 
     this.calendarApi
-      .createEvent(dateTime, duration, title, attendees)
+      .createEvent(dateTime, duration, title, location, attendees)
       .then(function()
       {
         let confirmation = `I've added ${title}`;
@@ -98,7 +100,7 @@ class Calendar
         if (titleEntity)
         {
           if (attendeeEntities && attendeeEntities.length)
-            confirmation += ` with ${attendees}`;
+            confirmation += ` with ${attendeeList}`;
         }
 
         if (locationEntity)
@@ -137,12 +139,12 @@ class Calendar
     let attendeeEntities = this.botBuilder.EntityRecognizer.findAllEntities(args.entities, "Calendar.Attendee");
     let titleEntity = this.botBuilder.EntityRecognizer.findEntity(args.entities, "Calendar.Title");
     let title;
-    let attendees;
+    let attendeeList;
     
     if (attendeeEntities && attendeeEntities.length > 0)
     {
-      attendees = buildAttendeeList(attendeeEntities);
-      title = buildTitle(titleEntity, appointmentEntity, attendees, session);
+      attendeeList = buildAttendeeList(attendeeEntities);
+      title = buildTitle(titleEntity, appointmentEntity, attendeeList, session);
     }
     
     let dateTimeEntity = this.botBuilder.EntityRecognizer.findEntity(args.entities, "builtin.datetimeV2.datetime");
@@ -183,7 +185,7 @@ class Calendar
       confirmation = `Are you sure you want to remove appointment scheduled on ${dateTimeToDelete.toLocaleString("en-US", locale)}`;
     }
 
-    if (attendees && title || dateTimeToDelete)
+    if (attendeeList && title || dateTimeToDelete)
     {
       let message = new this.botBuilder
         .Message(session)
@@ -196,7 +198,7 @@ class Calendar
 
       session.dialogData.event =
       {
-        attendees: attendees,
+        attendees: attendeeList,
         title: title,
         date: dateTimeToDelete,
       };
